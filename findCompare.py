@@ -1,27 +1,24 @@
 import crypt
-from hmac import compare_digest as compare_hash
 dictFile=[]
 hshFile=[]
-# with open('dict/brit-a-z.txt', encoding = "ISO-8859-1") as f:
-# 	dictFile = [line.rstrip('\n') for line in open('dict/brit-a-z.txt', encoding = "ISO-8859-1")]
 
-dictFile = [line.rstrip('\n') for line in open('dict/test.txt')]
-hshFile = [line.rstrip('\n') for line in open('hashDict.txt')]
+dictFile = [line.rstrip('\n') for line in open('dict/brit-a-z.txt')]
+hshFile = [line.split( ) for line in open('hashDict.txt')]
 
 i=0
 count = len(dictFile)
 
 while (i < count):
-	plaintext= dictFile[i]
-	encrypted= hshFile[i]
+	plaintext = dictFile[i]
+	encrypted = hshFile[0][i]
 
-	print (crypt.crypt(plaintext, encrypted))
-	print (':')
-	print (encrypted)
-	if compare_hash(encrypted, crypt.crypt(plaintext, encrypted)):
-		
-		print('works')
-	else:
-		print('does not work')
 
+	test1 = (crypt.crypt(plaintext, 'xoxo'))
+	test2 = encrypted
+
+	print (plaintext + "'s test encryption: " + test1)
+	print ('Dict hash for plaintext: ' + encrypted + "\n")
+
+	if (test1 == test2):
+		print (" MATCH ALERT!!!!!! " + test1 + ' = ' + plaintext + "\n")
 	i=i+1
