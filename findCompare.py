@@ -10,8 +10,7 @@ count = len(dictFile)
 
 while (i < count):
 	plaintext = dictFile[i]
-	encrypted = hshFile[0][i]
-
+	encrypted = str(hshFile[i]).strip("[]'")
 
 	test1 = (crypt.crypt(plaintext, 'xoxo'))
 	test2 = encrypted

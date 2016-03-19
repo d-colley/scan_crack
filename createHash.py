@@ -10,7 +10,7 @@ with open('dict/brit-a-z.txt') as file:
 		#creating hashes and storing
 		newHash = crackCrypt(line)
 		hashStore = open("hashDict.txt","a")
-		hashStore.write(newHash)
+		hashStore.write(newHash + '\n')
 
 		#creating comparison file
 		comparison = open("hashCompare.txt","a")
